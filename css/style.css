@@ -6,8 +6,7 @@
 }
 
 body {
-  background: url("../img/bg.png") no-repeat;
-  background-size: cover;
+  background: url("../img/bg.png") no-repeat fixed;
   margin-bottom: 50px;
 }
 
@@ -153,7 +152,7 @@ body {
   font-weight: bold;
   font-size: 22px;
   color: white;
-  background-color: #043eff;
+  background-color: #416dff;
   transition: all 0.2s ease-in-out;
 }
 .load-more:hover {

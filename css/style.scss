@@ -8,8 +8,7 @@ $red: rgb(255, 62, 62);
 }
 
 body {
-    background: url("../img/bg.png") no-repeat;
-    background-size: cover;
+    background: url("../img/bg.png") no-repeat fixed;
     margin-bottom: 50px;
 }
 
@@ -185,7 +184,7 @@ body {
     font-weight: bold;
     font-size: 22px;
     color: white;
-    background-color: rgb(4, 62, 255);
+    background-color: rgb(65, 109, 255);
     transition: all 0.2s ease-in-out;
 
     &:hover {

@@ -57,7 +57,7 @@ searchBth.addEventListener("click", function() {
     getPokemon(pokeName.value)
 });
 
-fetch(`${API_URL}?limit=${20}`)
+fetch(`${API_URL}?limit=${30}`)
 .then(res => res.json())
 .then(data => {
     function createPokemon(el, i) {
@@ -90,10 +90,15 @@ fetch(`${API_URL}?limit=${20}`)
                 el.classList.add("active");
                 currentActive.classList.remove("active");
             }
-            // if(!el.classList.contains("acitve")) {
-            //     console.log("aaaa")
-            // }
+        }),
+        document.addEventListener("click", function(e) {
+            const its_poke = e.target == el || el.contains(e.target);
+            const pokeIsAct = el.classList.contains("active");
+            if(!its_poke && pokeIsAct) {
+                el.classList.remove("active")
+            }
         })
     ))
+    
 })
 
