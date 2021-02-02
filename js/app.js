@@ -1,5 +1,6 @@
 let pokeName = document.querySelector(".poke-name-input");
 let searchBth = document.querySelector(".search-btn");
+let loadBtn = document.querySelector(".load-more");
 
 const API_URL = "https://pokeapi.co/api/v2/pokemon";
 
@@ -57,48 +58,92 @@ searchBth.addEventListener("click", function() {
     getPokemon(pokeName.value)
 });
 
-fetch(`${API_URL}?limit=${30}`)
-.then(res => res.json())
-.then(data => {
-    function createPokemon(el, i) {
-        const parentBlock = document.querySelector(".pokedex-all");
-        const childBlock = document.createElement("div");
-        childBlock.classList.add("pokemon");
-        childBlock.innerHTML = `
-        <div class="poke-img">
-            <img src="https://pokeres.bastionbot.org/images/pokemon/${i+1}.png" alt="">
-        </div>
-        <div class="poke-name">
-            <h2>${el.name} #${i+1}</h2>
-        </div>
-        `,
-        parentBlock.appendChild(childBlock)
-    }
+function loadPokes(currentCount = 20) {
+    fetch(`${API_URL}?limit=${currentCount}`)
+    .then(res => res.json())
+    .then(data => {
+        function createPokemon(el, i) {
+            const parentBlock = document.querySelector(".pokedex-all");
+            const childBlock = document.createElement("div");
+            childBlock.classList.add("pokemon");
+            childBlock.innerHTML = `
+            <div class="poke-img">
+                <img src="https://pokeres.bastionbot.org/images/pokemon/${i+1}.png" alt="">
+            </div>
+            <div class="poke-name">
+                <h2>${el.name} #${i+1}</h2>
+            </div>
+            `,
+            parentBlock.appendChild(childBlock)
 
-    data.results.map((el, i) => 
-        createPokemon(el, i),
-    )
+            fetch(`${API_URL}/${i+1}`)
+            .then(res1 => res1.json())
+            .then(data1 => {
+                const pokeType = data1.types[0].type.name;
+                childBlock.classList.add(pokeType);
+            })
+        }
 
-    let allPokes = document.querySelectorAll(".pokedex-all .pokemon");
-    allPokes.forEach((el, i) => (
-        el.addEventListener("click", function(e) {
-            getPokemon(i+1);
-            let currentActive = document.querySelector(".pokemon.active");
-            if(el.classList.contains("active")) {
-                el.classList.add("active");
-            } else {
-                el.classList.add("active");
-                currentActive.classList.remove("active");
-            }
-        }),
-        document.addEventListener("click", function(e) {
-            const its_poke = e.target == el || el.contains(e.target);
-            const pokeIsAct = el.classList.contains("active");
-            if(!its_poke && pokeIsAct) {
-                el.classList.remove("active")
-            }
-        })
-    ))
-    
+        data.results.map((el, i) => 
+            createPokemon(el, i),
+        )
+
+        let allPokes = document.querySelectorAll(".pokedex-all .pokemon");
+        allPokes.forEach((el, i) => (
+            el.addEventListener("click", function(e) {
+                getPokemon(i+1);
+                let currentActive = document.querySelector(".pokemon.active");
+                if(el.classList.contains("active")) {
+                    el.classList.add("active");
+                } else {
+                    el.classList.add("active");
+                    currentActive.classList.remove("active");
+                }
+            }),
+            document.addEventListener("click", function(e) {
+                const its_poke = e.target == el || el.contains(e.target);
+                const pokeIsAct = el.classList.contains("active");
+                if(!its_poke && pokeIsAct) {
+                    el.classList.remove("active")
+                }
+            })
+        ))
+    })
+}
+
+loadPokes();
+let count = 20;
+loadBtn.addEventListener("click", function() {
+    let parent = document.querySelector(".pokedex-all");
+    let child = document.querySelectorAll(".pokedex-all .pokemon");
+    child.forEach(el => {
+        parent.removeChild(el);
+    })
+    count = count + 10;
+    loadPokes(count)
 })
 
+
+//BACK TO TOP
+let bttBtn = document.querySelector(".back-to-top");
+
+function trackScroll() {
+    let scrolled = window.pageYOffset;
+    let coords = document.documentElement.clientHeight;
+
+    if(scrolled > coords/2) {
+        bttBtn.classList.add("show");
+    } else {
+        bttBtn.classList.remove("show");
+    }
+}
+
+function backToTop() {
+    if(window.pageYOffset > 0) {
+        window.scrollBy(0, -70);
+        setTimeout(backToTop, 0);
+    }
+}
+
+window.addEventListener("scroll", trackScroll);
+bttBtn.addEventListener("click", backToTop);

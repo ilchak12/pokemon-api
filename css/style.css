@@ -10,6 +10,29 @@ body {
   margin-bottom: 50px;
 }
 
+section {
+  position: relative;
+}
+section .back-to-top {
+  position: fixed;
+  z-index: 1100;
+  right: 50px;
+  bottom: 70px;
+  height: 50px;
+  width: 50px;
+  font-size: 20px;
+  outline: none;
+  border: 3px solid white;
+  border-radius: 50%;
+  background-color: #5c40ff;
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+section .show {
+  display: block;
+}
+
 .container {
   width: 100%;
   display: flex;
@@ -40,8 +63,9 @@ body {
 }
 .container .pokedex {
   padding: 10px 15px;
-  margin-top: 100px;
+  margin-top: 50px;
   max-width: 720px;
+  height: 700px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -52,6 +76,9 @@ body {
   .container .pokedex {
     max-width: 550px;
   }
+}
+.container .pokedex .pokemon {
+  height: max-content;
 }
 .container .pokedex .search-poke {
   display: flex;
@@ -129,7 +156,7 @@ body {
   width: 50px;
   height: 50px;
   position: absolute;
-  top: 0;
+  top: -1px;
   right: 0;
   z-index: 900;
 }
@@ -154,14 +181,19 @@ body {
   background-color: #fff;
   margin: 10px 5px;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  color: #242424;
 }
 @media (max-width: 767px) {
   .pokedex-all .pokemon {
     width: 140px;
   }
 }
+.pokedex-all .pokemon:hover {
+  transform: scale(1.1);
+}
 .pokedex-all .pokemon.active {
-  background-color: #ff6a6a;
+  background: #b2ff6a !important;
 }
 .pokedex-all .pokemon .poke-img img {
   height: 100%;
@@ -199,201 +231,201 @@ body {
 /*=============================================================================*/
 .normal {
   background: linear-gradient(225deg, white 390px, #c9c9c9 0);
-  border-top: 10px solid #c9c9c9;
+  border-top: 20px solid #c9c9c9;
   color: #242424;
 }
 .normal .right-top-angle, .normal .left-bottom-angle {
-  background: linear-gradient(225deg, #c9c9c9 35px, white 0);
+  background: linear-gradient(225deg, #c9c9c9 36px, white 0);
   border: none;
 }
 
 .fighting {
   background: linear-gradient(225deg, white 390px, #4e0000 0);
-  border-top: 10px solid #4e0000;
+  border-top: 20px solid #4e0000;
   color: #c95a00;
 }
 .fighting .right-top-angle, .fighting .left-bottom-angle {
-  background: linear-gradient(225deg, #4e0000 35px, white 0);
+  background: linear-gradient(225deg, #4e0000 36px, white 0);
   border: none;
 }
 
 .flying {
   background: linear-gradient(225deg, white 390px, #b0fcff 0);
-  border-top: 10px solid #b0fcff;
+  border-top: 20px solid #b0fcff;
   color: #242424;
 }
 .flying .right-top-angle, .flying .left-bottom-angle {
-  background: linear-gradient(225deg, #b0fcff 35px, white 0);
+  background: linear-gradient(225deg, #b0fcff 36px, white 0);
   border: none;
 }
 
 .poison {
   background: linear-gradient(225deg, white 390px, #5c0057 0);
-  border-top: 10px solid #5c0057;
+  border-top: 20px solid #5c0057;
   color: #af00be;
 }
 .poison .right-top-angle, .poison .left-bottom-angle {
-  background: linear-gradient(225deg, #5c0057 0, 35px, white 0);
+  background: linear-gradient(225deg, #5c0057 0, 36px, white 0);
   border: none;
 }
 
 .ground {
   background: linear-gradient(225deg, white 390px, #6e4b00 0);
-  border-top: 10px solid #6e4b00;
+  border-top: 20px solid #6e4b00;
   color: #d6af00;
 }
 .ground .right-top-angle, .ground .left-bottom-angle {
-  background: linear-gradient(225deg, #6e4b00 35px, white 0);
+  background: linear-gradient(225deg, #6e4b00 36px, white 0);
   border: none;
 }
 
 .rock {
   background: linear-gradient(225deg, white 390px, #36322d 0);
-  border-top: 10px solid #36322d;
+  border-top: 20px solid #36322d;
   color: #fc944f;
 }
 .rock .right-top-angle, .rock .left-bottom-angle {
-  background: linear-gradient(225deg, #36322d 35px, white 0);
+  background: linear-gradient(225deg, #36322d 36px, white 0);
   border: none;
 }
 
 .bug {
   background: linear-gradient(225deg, white 390px, #00ff95 0);
-  border-top: 10px solid #00ff95;
+  border-top: 20px solid #00ff95;
   color: #242424;
 }
 .bug .right-top-angle, .bug .left-bottom-angle {
-  background: linear-gradient(225deg, #00ff95 35px, white 0);
+  background: linear-gradient(225deg, #00ff95 36px, white 0);
   border: none;
 }
 
 .ghost {
   background: linear-gradient(225deg, white 390px, #9a00a8 0);
-  border-top: 10px solid #9a00a8;
+  border-top: 20px solid #9a00a8;
   color: #242424;
 }
 .ghost .right-top-angle, .ghost .left-bottom-angle {
-  background: linear-gradient(225deg, #9a00a8 35px, white 0);
+  background: linear-gradient(225deg, #9a00a8 36px, white 0);
   border: none;
 }
 
 .steel {
   background: linear-gradient(225deg, white 390px, #242424 0);
-  border-top: 10px solid #242424;
+  border-top: 20px solid #242424;
   color: #818181;
 }
 .steel .right-top-angle, .steel .left-bottom-angle {
-  background: linear-gradient(225deg, #242424 35px, white 0);
+  background: linear-gradient(225deg, #242424 36px, white 0);
   border: none;
 }
 
 .fire {
   background: linear-gradient(225deg, white 390px, red 0);
-  border-top: 10px solid red;
+  border-top: 20px solid red;
   color: #242424;
 }
 .fire .right-top-angle, .fire .left-bottom-angle {
-  background: linear-gradient(225deg, red 35px, white 0);
+  background: linear-gradient(225deg, red 36px, white 0);
   border: none;
 }
 
 .water {
   background: linear-gradient(225deg, white 390px, #1100ff 0);
-  border-top: 10px solid #1100ff;
+  border-top: 20px solid #1100ff;
   color: #242424;
 }
 .water .right-top-angle, .water .left-bottom-angle {
-  background: linear-gradient(225deg, #1100ff 35px, white 0);
+  background: linear-gradient(225deg, #1100ff 36px, white 0);
   border: none;
 }
 
 .grass {
   background: linear-gradient(225deg, white 390px, #25db00 0);
-  border-top: 10px solid #25db00;
+  border-top: 20px solid #25db00;
   color: #242424;
 }
 .grass .right-top-angle, .grass .left-bottom-angle {
-  background: linear-gradient(225deg, #25db00 35px, white 0);
+  background: linear-gradient(225deg, #25db00 36px, white 0);
   border: none;
 }
 
 .electric {
   background: linear-gradient(225deg, white 390px, #eeff00 0);
-  border-top: 10px solid #eeff00;
+  border-top: 20px solid #eeff00;
   color: #242424;
 }
 .electric .right-top-angle, .electric .left-bottom-angle {
-  background: linear-gradient(225deg, #eeff00 35px, white 0);
+  background: linear-gradient(225deg, #eeff00 36px, white 0);
   border: none;
 }
 
 .psychic {
   background: linear-gradient(225deg, white 390px, #ff00b3 0);
-  border-top: 10px solid #ff00b3;
+  border-top: 20px solid #ff00b3;
   color: #242424;
 }
 .psychic .right-top-angle, .psychic .left-bottom-angle {
-  background: linear-gradient(225deg, #ff00b3 35px, white 0);
+  background: linear-gradient(225deg, #ff00b3 36px, white 0);
   border: none;
 }
 
 .ice {
   background: linear-gradient(225deg, white 390px, #00eeff 0);
-  border-top: 10px solid #00eeff;
+  border-top: 20px solid #00eeff;
   color: #242424;
 }
 .ice .right-top-angle, .ice .left-bottom-angle {
-  background: linear-gradient(225deg, #00eeff 35px, white 0);
+  background: linear-gradient(225deg, #00eeff 36px, white 0);
   border: none;
 }
 
 .dragon {
   background: linear-gradient(225deg, white 390px, #ffbb00 0);
-  border-top: 10px solid #ffbb00;
+  border-top: 20px solid #ffbb00;
   color: #242424;
 }
 .dragon .right-top-angle, .dragon .left-bottom-angle {
-  background: linear-gradient(225deg, #ffbb00 35px, white 0);
+  background: linear-gradient(225deg, #ffbb00 36px, white 0);
   border: none;
 }
 
 .dark {
   background: linear-gradient(225deg, white 390px, black 0);
-  border-top: 10px solid black;
+  border-top: 20px solid black;
   color: #818181;
 }
 .dark .right-top-angle, .dark .left-bottom-angle {
-  background: linear-gradient(225deg, black 35px, white 0);
+  background: linear-gradient(225deg, black 36px, white 0);
   border: none;
 }
 
 .fairy {
   background: linear-gradient(225deg, white 390px, #ffd6a0 0);
-  border-top: 10px solid #ffd6a0;
+  border-top: 20px solid #ffd6a0;
   color: #242424;
 }
 .fairy .right-top-angle, .fairy .left-bottom-angle {
-  background: linear-gradient(225deg, #ffd6a0 35px, white 0);
+  background: linear-gradient(225deg, #ffd6a0 36px, white 0);
   border: none;
 }
 
 .unknown {
   background: linear-gradient(225deg, white 390px, white 0);
-  border-top: 10px solid white;
+  border-top: 20px solid white;
   color: #242424;
 }
 .unknown .right-top-angle, .unknown .left-bottom-angle {
-  background: linear-gradient(225deg, white 35px, white 0);
+  background: linear-gradient(225deg, white 36px, white 0);
   border: none;
 }
 
 .shadow {
   background: linear-gradient(225deg, white 390px, #270033 0);
-  border-top: 10px solid #270033;
+  border-top: 20px solid #270033;
   color: dimgray;
 }
 .shadow .right-top-angle, .shadow .left-bottom-angle {
-  background: linear-gradient(225deg, #270033 35px, white 0);
+  background: linear-gradient(225deg, #270033 36px, white 0);
   border: none;
 }
 
