@@ -1,5 +1,29 @@
 $red: rgb(255, 62, 62);
 
+@mixin tablet {
+    @media (min-width: 768px) and (max-width: 991px) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: 767px){
+        @content;
+    }
+}
+
+@mixin large {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media (min-width: 992px) and (max-width: 1199px) {
+        @content;
+    }
+}
+
 * {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -14,21 +38,41 @@ body {
 
 .container {
     width: 100%;
-    max-width: 1140px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
 
+    @include mobile {
+        max-width: 450px;
+    }
+
+    @include tablet {
+        max-width: 720px;
+    }
+
+    @include large {
+        max-width: 1140px;
+    }
+
+    @include laptop {
+        max-width: 960px;
+    }
+
     .pokedex {
-        padding: 10px 0;
+        padding: 10px 15px;
         margin-top: 100px;
-        width: 720px;
+        max-width: 720px;
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        @include mobile {
+            max-width: 550px;
+        }
 
         .search-poke {
             display: flex;
@@ -79,13 +123,15 @@ body {
     // border-top: 10px solid $red;
     border-radius: 9px;
     margin-top: 20px;
-    width: 400px;
+    max-width: 400px;
+    width: 100%;
     text-align: center;
     // color: rgb(36, 36, 36);
     font-weight: bold;
     padding: 15px;
     position: relative;
     box-shadow: 0 0 15px rgba($color: black, $alpha: 0.7);
+    transition: all 0.3s ease-in-out;
 
     .poke-img {
         img {
@@ -151,6 +197,10 @@ body {
         margin: 10px 5px;
         cursor: pointer;
 
+        @include mobile {
+            width: 140px;
+        }
+
         &.active {
             background-color: rgb(255, 106, 106);
         }
@@ -159,6 +209,10 @@ body {
             img {
                 height: 100%;
                 width: 100px;
+
+                @include mobile {
+                    width: 80px;
+                }
             }
         }
 
