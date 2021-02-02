@@ -8,14 +8,16 @@ $red: rgb(255, 62, 62);
 }
 
 body {
-    background: url("../img/bg.png");
+    background: url("../img/bg.png") no-repeat;
     background-size: cover;
+    margin-bottom: 50px;
 }
 
 .container {
     width: 100%;
     max-width: 1140px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
@@ -70,68 +72,345 @@ body {
                 }
             }
         }
+    }
+}
 
-        .pokemon {
-            background: linear-gradient(225deg, white 390px, $red 0);
-            border-top: 10px solid $red;
-            border-radius: 9px;
-            margin-top: 20px;
-            width: 400px;
-            text-align: center;
-            color: rgb(36, 36, 36);
-            font-weight: bold;
-            padding: 15px;
-            position: relative;
-            box-shadow: 0 0 15px rgba($color: black, $alpha: 0.7);
+.pokemon {
+    // background: linear-gradient(225deg, white 390px, $red 0);
+    // border-top: 10px solid $red;
+    border-radius: 9px;
+    margin-top: 20px;
+    width: 400px;
+    text-align: center;
+    // color: rgb(36, 36, 36);
+    font-weight: bold;
+    padding: 15px;
+    position: relative;
+    box-shadow: 0 0 15px rgba($color: black, $alpha: 0.7);
 
-            .poke-img {
-                img {
-                    height: 100%;
-                    width: 200px;
-                }
-            }
+    .poke-img {
+        img {
+            height: 100%;
+            width: 200px;
+        }
+    }
 
-            .poke-name {
-                h2 {
-                    font-size: 36px;
-                    text-transform: capitalize;
-                }
-            }
+    .poke-name {
+        h2 {
+            font-size: 36px;
+            text-transform: capitalize;
+        }
+    }
 
-            .poke-stats {
-                text-align: left;
-                font-size: 24px;
-                z-index: 1000;
-                position: relative;
+    .poke-stats, .poke-abilities {
+        text-align: left;
+        font-size: 24px;
+        z-index: 1000;
+        position: relative;
 
-                span {
-                    font-size: 26px;
-                    font-style: italic;
-                    color: rgb(255, 255, 255);
-                }
-            }
+        span {
+            font-size: 26px;
+            font-style: italic;
+        }
+    }
 
-            .right-top-angle {
-                width: 50px;
-                height: 50px;
-                background: linear-gradient(225deg, $red 35px, white 0);
-                position: absolute;
-                top: 0;
-                right: 0;
-                z-index: 900;
-            }
+    .poke-abilities {
+        margin-top: 20px;
+    }
 
-            .left-bottom-angle {
-                width: 45px;
-                height: 45px;
-                background: linear-gradient(225deg, $red 35px, white 0);
-                border-bottom-left-radius: 9px;
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                overflow: hidden;
-                z-index: 900;
+    .right-top-angle {
+        width: 50px;
+        height: 50px;
+        // background: linear-gradient(225deg, $red 35px, white 0);
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 900;
+    }
+
+    .left-bottom-angle {
+        width: 45px;
+        height: 45px;
+        // background: linear-gradient(225deg, $red 35px, white 0);
+        border-bottom-left-radius: 9px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+        z-index: 900;
+    }
+}
+
+.pokedex-all {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .pokemon {
+        width: 200px;
+        background-color: #fff;
+        margin: 10px 5px;
+        cursor: pointer;
+
+        &.active {
+            background-color: rgb(255, 106, 106);
+        }
+
+        .poke-img {
+            img {
+                height: 100%;
+                width: 100px;
             }
         }
+
+        .poke-name {
+            h2 {
+                font-size: 20px;
+                text-transform: capitalize;
+            }
+        }
+    }
+}
+
+
+.load-more {
+    width: 200px;
+    height: 50px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 22px;
+    color: white;
+    background-color: rgb(4, 62, 255);
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+/*=============================================================================*/
+
+.normal {
+    background: linear-gradient(225deg, white 390px, rgb(201, 201, 201) 0);
+    border-top: 10px solid rgb(201, 201, 201);
+    color: rgb(36, 36, 36);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(201, 201, 201) 35px, white 0);
+        border: none;
+    }
+}
+
+.fighting {
+    background: linear-gradient(225deg, white 390px, rgb(78, 0, 0) 0);
+    border-top: 10px solid rgb(78, 0, 0);
+    color: rgb(201, 90, 0);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(78, 0, 0) 35px, white 0);
+        border: none;
+    }
+}
+
+.flying {
+    background: linear-gradient(225deg, white 390px, rgb(176, 252, 255) 0);
+    border-top: 10px solid rgb(176, 252, 255);
+    color: rgb(36, 36, 36);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(176, 252, 255) 35px, white 0);
+        border: none;
+    }
+}
+
+.poison {
+    background: linear-gradient(225deg, white 390px, rgb(92, 0, 87) 0);
+    border-top: 10px solid rgb(92, 0, 87);
+    color: rgb(175, 0, 190);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(92, 0, 87) 0, 35px, white 0);
+        border: none;
+    }
+}
+
+.ground {
+    background: linear-gradient(225deg, white 390px, rgb(110, 75, 0) 0);
+    border-top: 10px solid rgb(110, 75, 0);
+    color: rgb(214, 175, 0);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(110, 75, 0) 35px, white 0);
+        border: none;
+    }
+}
+
+.rock {
+    background: linear-gradient(225deg, white 390px, rgb(54, 50, 45) 0);
+    border-top: 10px solid rgb(54, 50, 45);
+    color: rgb(252, 148, 79);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(54, 50, 45) 35px, white 0);
+        border: none;
+    }
+}
+
+.bug {
+    background: linear-gradient(225deg, white 390px, rgb(0, 255, 149) 0);
+    border-top: 10px solid rgb(0, 255, 149);
+    color: rgb(36, 36, 36);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(0, 255, 149) 35px, white 0);
+        border: none;
+    }
+}
+
+.ghost {
+    background: linear-gradient(225deg, white 390px, rgb(154, 0, 168) 0);
+    border-top: 10px solid rgb(154, 0, 168);
+    color: rgb(36, 36, 36);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(154, 0, 168) 35px, white 0);
+        border: none;
+    }
+}
+
+.steel {
+    background: linear-gradient(225deg, white 390px, rgb(36, 36, 36) 0);
+    border-top: 10px solid rgb(36, 36, 36);
+    color: rgb(129, 129, 129);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(36, 36, 36) 35px, white 0);
+        border: none;
+    }
+}
+
+.fire {
+    background: linear-gradient(225deg, white 390px, rgb(255, 0, 0) 0);
+    border-top: 10px solid rgb(255, 0, 0);
+    color: rgb(36, 36, 36);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(255, 0, 0) 35px, white 0);
+        border: none;
+    }
+}
+
+.water {
+    background: linear-gradient(225deg, white 390px, rgb(17, 0, 255) 0);
+    border-top: 10px solid rgb(17, 0, 255);
+    color: rgb(36, 36, 36);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(17, 0, 255) 35px, white 0);
+        border: none;
+    }
+}
+
+.grass {
+    background: linear-gradient(225deg, white 390px, rgb(37, 219, 0) 0);
+    border-top: 10px solid rgb(37, 219, 0);
+    color: rgb(36, 36, 36);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(37, 219, 0) 35px, white 0);
+        border: none;
+    }
+}
+
+.electric {
+    background: linear-gradient(225deg, white 390px, rgb(238, 255, 0) 0);
+    border-top: 10px solid rgb(238, 255, 0);
+    color: rgb(36, 36, 36);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(238, 255, 0) 35px, white 0);
+        border: none;
+    }
+}
+
+.psychic {
+    background: linear-gradient(225deg, white 390px, rgb(255, 0, 179) 0);
+    border-top: 10px solid rgb(255, 0, 179);
+    color: rgb(36, 36, 36);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(255, 0, 179) 35px, white 0);
+        border: none;
+    }
+}
+
+.ice {
+    background: linear-gradient(225deg, white 390px, rgb(0, 238, 255) 0);
+    border-top: 10px solid rgb(0, 238, 255);
+    color: rgb(36, 36, 36);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(0, 238, 255) 35px, white 0);
+        border: none;
+    }
+}
+
+.dragon {
+    background: linear-gradient(225deg, white 390px, rgb(255, 187, 0) 0);
+    border-top: 10px solid rgb(255, 187, 0);
+    color: rgb(36, 36, 36);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(255, 187, 0) 35px, white 0);
+        border: none;
+    }
+}
+
+.dark {
+    background: linear-gradient(225deg, white 390px, rgb(0, 0, 0) 0);
+    border-top: 10px solid rgb(0, 0, 0);
+    color: rgb(129, 129, 129);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(0, 0, 0) 35px, white 0);
+        border: none;
+    }
+}
+
+.fairy {
+    background: linear-gradient(225deg, white 390px, rgb(255, 214, 160) 0);
+    border-top: 10px solid rgb(255, 214, 160);
+    color: rgb(36, 36, 36);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(255, 214, 160) 35px, white 0);
+        border: none;
+    }
+}
+
+.unknown {
+    background: linear-gradient(225deg, white 390px, rgb(255, 255, 255) 0);
+    border-top: 10px solid rgb(255, 255, 255);
+    color: rgb(36, 36, 36);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(255, 255, 255) 35px, white 0);
+        border: none;
+    }
+}
+
+.shadow {
+    background: linear-gradient(225deg, white 390px, rgb(39, 0, 51) 0);
+    border-top: 10px solid rgb(39, 0, 51);
+    color: rgb(105, 105, 105);
+
+    .right-top-angle, .left-bottom-angle {
+        background: linear-gradient(225deg, rgb(39, 0, 51) 35px, white 0);
+        border: none;
     }
 }
