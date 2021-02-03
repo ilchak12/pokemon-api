@@ -208,6 +208,17 @@ section .show {
 .pokedex-all .pokemon.active {
   background: #b2ff6a !important;
 }
+.pokedex-all .pokemon .poke-img {
+  background-color: #ffc0a2;
+  border-radius: 0 50% 50% 50%;
+  width: 70%;
+  margin: 0 auto;
+}
+@media (max-width: 767px) {
+  .pokedex-all .pokemon .poke-img {
+    width: 80%;
+  }
+}
 .pokedex-all .pokemon .poke-img img {
   height: 100%;
   width: 100px;

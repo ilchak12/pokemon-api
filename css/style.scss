@@ -257,6 +257,15 @@ section {
         }
 
         .poke-img {
+            background-color: rgb(255, 192, 162);
+            border-radius: 0 50% 50% 50%;
+            width: 70%;
+            margin: 0 auto;
+
+            @include mobile {
+                width: 80%;
+            }
+            
             img {
                 height: 100%;
                 width: 100px;

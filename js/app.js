@@ -73,9 +73,9 @@ function loadPokes(currentCount = 20) {
             <div class="poke-name">
                 <h2>${el.name} #${i+1}</h2>
             </div>
-            `,
+            `;
             parentBlock.appendChild(childBlock)
-
+            
             fetch(`${API_URL}/${i+1}`)
             .then(res1 => res1.json())
             .then(data1 => {
