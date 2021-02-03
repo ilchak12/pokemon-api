@@ -37,6 +37,10 @@ body {
     background-size: cover;
     margin-bottom: 50px;
     background-color: #fff;
+
+    @include mobile {
+        background-size: 500% auto;
+    }
 }
 
 section {

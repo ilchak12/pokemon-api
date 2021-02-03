@@ -12,6 +12,11 @@ body {
   margin-bottom: 50px;
   background-color: #fff;
 }
+@media (max-width: 767px) {
+  body {
+    background-size: 500% auto;
+  }
+}
 
 section {
   position: relative;
