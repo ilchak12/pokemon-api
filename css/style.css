@@ -6,18 +6,18 @@
 }
 
 body {
-  background: url("../img/bg.png") no-repeat fixed;
+  background: url("../img/bg.png") no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   margin-bottom: 50px;
 }
 
 section {
   position: relative;
 }
-section .back-to-top {
+section .back-to-top, section .back-to-down {
   position: fixed;
   z-index: 1100;
-  right: 50px;
-  bottom: 70px;
   height: 50px;
   width: 50px;
   font-size: 20px;
@@ -28,6 +28,14 @@ section .back-to-top {
   color: white;
   cursor: pointer;
   display: none;
+}
+section .back-to-top {
+  right: 50px;
+  bottom: 130px;
+}
+section .back-to-down {
+  right: 50px;
+  bottom: 70px;
 }
 section .show {
   display: block;

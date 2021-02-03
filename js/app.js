@@ -124,8 +124,9 @@ loadBtn.addEventListener("click", function() {
 })
 
 
-//BACK TO TOP
+//BACK TO TOP and DOWN
 let bttBtn = document.querySelector(".back-to-top");
+let btdBtn = document.querySelector(".back-to-down");
 
 function trackScroll() {
     let scrolled = window.pageYOffset;
@@ -133,17 +134,26 @@ function trackScroll() {
 
     if(scrolled > coords/2) {
         bttBtn.classList.add("show");
+        btdBtn.classList.add("show");
     } else {
         bttBtn.classList.remove("show");
+        btdBtn.classList.remove("show");
     }
 }
 
 function backToTop() {
     if(window.pageYOffset > 0) {
-        window.scrollBy(0, -70);
+        window.scrollBy(0, -100);
         setTimeout(backToTop, 0);
+    }
+}
+
+function backToDown() {
+    if(window.pageYOffset > 0) {
+        window.scrollTo(0, document.documentElement.scrollHeight);
     }
 }
 
 window.addEventListener("scroll", trackScroll);
 bttBtn.addEventListener("click", backToTop);
+btdBtn.addEventListener("click", backToDown);
