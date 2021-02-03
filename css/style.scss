@@ -37,10 +37,6 @@ body {
     background-size: cover;
     margin-bottom: 50px;
     background-color: #fff;
-
-    @include mobile {
-        background-size: 500% auto;
-    }
 }
 
 section {
@@ -120,7 +116,7 @@ section {
 }
 
 .r-side {
-    margin-left: 370px;
+    margin-left: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -171,6 +167,8 @@ section {
     .pokemon {
         height: max-content;
         width: 100%;
+        max-width: 370px;
+        min-width: 370px;
     }
 
     .search-poke {
@@ -291,7 +289,7 @@ section {
 .pokedex-all {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
 
     .pokemon {
         width: 200px;
