@@ -54,6 +54,19 @@ section {
         color: white;
         cursor: pointer;
         display: none;
+        transition: all 0.1s ease-in-out;
+
+        &:hover {
+            transform: scale(1.1);
+
+            @include mobile {
+                transform: none;
+            }
+
+            @include tablet {
+                transform: none;
+            }
+        }
     }
 
     .back-to-top {
