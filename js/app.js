@@ -8,17 +8,23 @@ function getPokemon(pokeid) {
     fetch(`${API_URL}/${pokeid}`)
     .then(res => res.json())
     .then(data => {
+        function createStat() {
+            let newParent = document.querySelector(".poke-stats");
+            data.stats.forEach(el => {
+                const div = document.createElement("div");
+                div.innerHTML = `${el.stat.name}: <span>${el.base_stat}</span>`;
+                newParent.appendChild(div);
+            })
+            const newDiv = document.createElement("div");
+            newDiv.innerHTML = `Weigth: <span>${weight}</span>`;
+            newParent.appendChild(newDiv);
+        }
+
         const parentBlock = document.querySelector(".pokedex");
         const childBlock = document.createElement("div");
-        const hpStat = data.stats[0].base_stat;
-        const attackStat = data.stats[1].base_stat;
-        const defenseStat = data.stats[2].base_stat;
-        const specAttackStat = data.stats[3].base_stat;
-        const specDefenseStat = data.stats[4].base_stat;
-        const speedStat = data.stats[5].base_stat
         const weight = data.weight;
         const pokeType = data.types[0].type.name;
-
+        
         childBlock.classList.add("pokemon", `${pokeType}`);
         childBlock.innerHTML = `
             <div class="poke-img">
@@ -28,34 +34,34 @@ function getPokemon(pokeid) {
                 <h2>${data.name} #${data.id}</h2>
             </div>
             <div class="poke-stats">
-                <div class="hp-stat">HP: <span>${hpStat}</span></div>
-                <div class="attack-stat">Attack: <span>${attackStat}</span></div>
-                <div class="defense-stat">Defense: <span>${defenseStat}</span></div>
-                <div class="spec-a-stat">Special Attack: <span>${specAttackStat}</span></div>
-                <div class="spec-d-stat">Special Defense: <span>${specDefenseStat}</span></div>
-                <div class="speed-stat">Speed: <span>${speedStat}</span></div>
-                <div class="weight-stat">Weight: <span>${weight}</span></div>
             </div>
             <div class="poke-abilities">
                 Abitlities: <span>${data.abilities.map(el => " " + el.ability.name)}</span>
             </div>
             <div class="right-top-angle ${pokeType}"></div>
             <div class="left-bottom-angle ${pokeType}"></div>
-        `
+        `;
 
         let currentChild = document.querySelector(".pokemon");
         if(!currentChild) {
             parentBlock.appendChild(childBlock);
+            createStat();
         } else {
             currentChild.remove(childBlock);
             parentBlock.appendChild(childBlock);
+            createStat();
         }
     })
 }
 
 getPokemon(pokeName.value);
 searchBth.addEventListener("click", function() {
-    getPokemon(pokeName.value)
+    getPokemon(pokeName.value);
+});
+pokeName.addEventListener("keypress", function(e) {
+    if(e.key == "Enter") {
+        getPokemon(pokeName.value);
+    }
 });
 
 function loadPokes(currentCount = 20) {
@@ -123,23 +129,9 @@ loadBtn.addEventListener("click", function() {
     loadPokes(count)
 })
 
-
 //BACK TO TOP and DOWN
 let bttBtn = document.querySelector(".back-to-top");
 let btdBtn = document.querySelector(".back-to-down");
-
-function trackScroll() {
-    let scrolled = window.pageYOffset;
-    let coords = document.documentElement.clientHeight;
-
-    if(scrolled > coords/2) {
-        bttBtn.classList.add("show");
-        btdBtn.classList.add("show");
-    } else {
-        bttBtn.classList.remove("show");
-        btdBtn.classList.remove("show");
-    }
-}
 
 function backToTop() {
     if(window.pageYOffset > 0) {
@@ -149,11 +141,14 @@ function backToTop() {
 }
 
 function backToDown() {
-    if(window.pageYOffset > 0) {
+    if(window.pageYOffset == 0 || window.pageYOffset > 0) {
         window.scrollTo(0, document.documentElement.scrollHeight);
     }
 }
 
-window.addEventListener("scroll", trackScroll);
 bttBtn.addEventListener("click", backToTop);
 btdBtn.addEventListener("click", backToDown);
+
+// setInterval(() =>  {
+//     console.clear();
+// }, 60000);

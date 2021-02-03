@@ -32,10 +32,11 @@ $red: rgb(255, 62, 62);
 }
 
 body {
-    background: url("../img/bg.png") no-repeat center;
+    background: url("../img/background.jpg") no-repeat center;
     background-attachment: fixed;
     background-size: cover;
     margin-bottom: 50px;
+    background-color: #fff;
 }
 
 section {
@@ -53,7 +54,6 @@ section {
         background-color: rgb(92, 64, 255);
         color: white;
         cursor: pointer;
-        display: none;
         transition: all 0.1s ease-in-out;
 
         &:hover {
@@ -78,10 +78,6 @@ section {
         right: 50px;
         bottom: 70px;
     }
-
-    .show {
-        display: block;
-    }
 }
 
 .container {
@@ -91,6 +87,7 @@ section {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+    position: relative;
 
     @include mobile {
         max-width: 450px;
@@ -108,64 +105,108 @@ section {
         max-width: 960px;
     }
 
-    .pokedex {
-        padding: 10px 15px;
-        margin-top: 50px;
-        max-width: 720px;
-        height: 700px;
-        width: 100%;
+    .sides {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        position: relative;
+    }
+}
+
+.r-side {
+    margin-left: 370px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include laptop {
+        margin-left: 420px;
+    }
+
+    @include tablet {
+        margin-left: 0;
+    }
+
+    @include mobile {
+        margin-left: 0;
+    }
+}
+
+.pokedex {
+    position: fixed;
+    top: 0;
+    left: 50px;
+    overflow-x: hidden;
+    padding: 10px 15px;
+    max-width: max-content;
+    min-width: 370px;
+    height: 700px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include mobile {
+        max-width: 550px;
+        position: relative;
+        max-width: 720px;
+        left: 0;
+        min-width: 0;
+    }
+
+    @include tablet {
+        position: relative;
+        max-width: 720px;
+        left: 0;
+        min-width: 0;
+    }
+
+    .pokemon {
+        height: max-content;
+        width: 100%;
+    }
+
+    .search-poke {
+        display: flex;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
 
-        @include mobile {
-            max-width: 550px;
+        .poke-name-input {
+            width: 240px;
+            height: 40px;
+            outline: none;
+            border: 1px solid rgb(58, 94, 255);
+            padding-left: 15px;
+            font-size: 18px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            border-right: none;
+            background-color: rgb(255, 255, 255);
+            font-weight: bold;
+            text-transform: lowercase;
         }
 
-        .pokemon {
-            height: max-content;
-        }
+        .search-btn {
+            height: 40px;
+            width: 70px;
+            background-color: rgb(58, 94, 255);
+            outline: none;
+            border: none;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
 
-        .search-poke {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-
-            .poke-name-input {
-                width: 240px;
-                height: 40px;
-                outline: none;
-                border: 1px solid rgb(58, 94, 255);
-                padding-left: 15px;
-                font-size: 18px;
-                border-top-left-radius: 10px;
-                border-bottom-left-radius: 10px;
-                border-right: none;
-                background-color: rgb(255, 255, 255);
-                font-weight: bold;
-                text-transform: lowercase;
-            }
-
-            .search-btn {
-                height: 40px;
-                width: 70px;
-                background-color: rgb(58, 94, 255);
-                outline: none;
-                border: none;
-                color: white;
-                text-transform: uppercase;
-                font-weight: bold;
-                border-top-right-radius: 10px;
-                border-bottom-right-radius: 10px;
-                cursor: pointer;
-                transition: all 0.3s ease-in-out;
-
-                &:hover {
-                    transform: scale(1.1);
-                    border-radius: 10px;
-                }
+            &:hover {
+                transform: scale(1.1);
+                border-radius: 10px;
             }
         }
     }
@@ -210,6 +251,10 @@ section {
             font-size: 26px;
             font-style: italic;
         }
+    }
+
+    .poke-stats {
+        text-transform: capitalize;
     }
 
     .poke-abilities {
