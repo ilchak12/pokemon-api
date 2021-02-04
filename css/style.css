@@ -14,12 +14,14 @@ body {
 }
 @media (max-width: 767px) {
   body {
-    background-size: auto;
+    background: url("../img/mobilebg.jpg") repeat center;
+    background-size: 200px;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   body {
-    background-size: auto;
+    background: url("../img/mobilebg.jpg") repeat center;
+    background-size: 200px;
   }
 }
 
@@ -61,6 +63,9 @@ section .back-to-top {
 section .back-to-down {
   right: 50px;
   bottom: 70px;
+}
+section .hide {
+  display: none;
 }
 
 .container {
@@ -129,7 +134,7 @@ section .back-to-down {
   left: 50px;
   overflow-x: hidden;
   padding: 10px 15px;
-  max-width: max-content;
+  max-width: 400px;
   min-width: 370px;
   height: max-content;
   min-height: 700px;
