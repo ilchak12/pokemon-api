@@ -71,8 +71,8 @@ pokeName.addEventListener("keypress", function(e) {
     }
 });
 
-function loadPokes(currentCount = 20) {
-    fetch(`${API_URL}?limit=${currentCount}`)
+function loadPokes(currentCount = 20, currentLast = 0) {
+    fetch(`${API_URL}?limit=${currentCount}&offset=${currentLast}`)
     .then(res => res.json())
     .then(data => {
         function createPokemon(el, i) {
@@ -81,14 +81,12 @@ function loadPokes(currentCount = 20) {
             childBlock.classList.add("pokemon");
             childBlock.innerHTML = `
             <div class="poke-name">
-                <h2>${el.name} #${i+1}</h2>
+                <h2>${el.name} #${i+1+currentLast}</h2>
             </div>
             `;
             parentBlock.appendChild(childBlock)
             
-            
-            
-            fetch(`${API_URL}/${i+1}`)
+            fetch(`${API_URL}/${i+1+currentLast}`)
             .then(res1 => res1.json())
             .then(data1 => {
                 const pokeType = data1.types[0].type.name;
@@ -132,14 +130,11 @@ function loadPokes(currentCount = 20) {
 
 loadPokes();
 let count = 20;
+let lastPoke = 10;
 loadBtn.addEventListener("click", function() {
-    let parent = document.querySelector(".pokedex-all");
-    let child = document.querySelectorAll(".pokedex-all .pokemon");
-    child.forEach(el => {
-        parent.removeChild(el);
-    })
-    count = count + 10;
-    loadPokes(count)
+    count = 10;
+    lastPoke = lastPoke + 10;
+    loadPokes(count, lastPoke);
 })
 
 //BACK TO TOP and DOWN
@@ -154,8 +149,9 @@ function backToTop() {
 }
 
 function backToDown() {
+    let scrollHeight = document.documentElement.scrollHeight;
     if(window.pageYOffset == 0 || window.pageYOffset > 0) {
-        window.scrollTo(0, document.documentElement.scrollHeight);
+        window.scrollTo(0, scrollHeight);
     }
 }
 
