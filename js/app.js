@@ -16,7 +16,14 @@ function getPokemon(pokeid) {
                 newParent.appendChild(div);
             })
             const newDiv = document.createElement("div");
-            newDiv.innerHTML = `Weigth: <span>${weight}</span>`;
+            let sWeight = weight.toString();
+            if(sWeight.length == 2) {
+                newDiv.innerHTML = `Weigth: <span>${sWeight.substr(0,1) + "." + sWeight.substr(1)}kg</span>`;
+            } else if(sWeight.length == 3) {
+                newDiv.innerHTML = `Weigth: <span>${sWeight.substr(0,2) + "." + sWeight.substr(2)}kg</span>`;
+            } else {
+                newDiv.innerHTML = `Weigth: <span>${sWeight.substr(0,3) + "." + sWeight.substr(3)}kg</span>`;
+            }
             newParent.appendChild(newDiv);
         }
 
@@ -73,21 +80,27 @@ function loadPokes(currentCount = 20) {
             const childBlock = document.createElement("div");
             childBlock.classList.add("pokemon");
             childBlock.innerHTML = `
-            <div class="poke-img">
-                <img src="https://pokeres.bastionbot.org/images/pokemon/${i+1}.png" alt="">
-            </div>
             <div class="poke-name">
                 <h2>${el.name} #${i+1}</h2>
             </div>
             `;
             parentBlock.appendChild(childBlock)
             
+            
+            
             fetch(`${API_URL}/${i+1}`)
             .then(res1 => res1.json())
             .then(data1 => {
                 const pokeType = data1.types[0].type.name;
                 childBlock.classList.add(pokeType);
+                const childBlockImg = document.createElement("div");
+                childBlockImg.classList.add("poke-img", pokeType);
+                childBlockImg.innerHTML = `
+                <img src="https://pokeres.bastionbot.org/images/pokemon/${data1.id}.png" alt="">
+                `;
+                childBlock.prepend(childBlockImg);
             })
+            
         }
 
         data.results.map((el, i) => 

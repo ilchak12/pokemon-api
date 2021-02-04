@@ -12,9 +12,20 @@ body {
   margin-bottom: 50px;
   background-color: #fff;
 }
+@media (max-width: 767px) {
+  body {
+    background-size: auto;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  body {
+    background-size: auto;
+  }
+}
 
 section {
   position: relative;
+  margin-top: 50px;
 }
 section .back-to-top, section .back-to-down {
   position: fixed;
@@ -114,17 +125,17 @@ section .back-to-down {
 
 .pokedex {
   position: fixed;
-  top: 0;
+  top: 40px;
   left: 50px;
   overflow-x: hidden;
   padding: 10px 15px;
   max-width: max-content;
   min-width: 370px;
-  height: 700px;
+  height: max-content;
+  min-height: 700px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 @media (max-width: 767px) {
@@ -133,6 +144,7 @@ section .back-to-down {
     position: relative;
     max-width: 720px;
     left: 0;
+    top: 0;
     min-width: 0;
   }
 }
@@ -141,6 +153,7 @@ section .back-to-down {
     position: relative;
     max-width: 720px;
     left: 0;
+    top: 0;
     min-width: 0;
   }
 }
@@ -148,7 +161,7 @@ section .back-to-down {
   height: max-content;
   width: 100%;
   max-width: 370px;
-  min-width: 370px;
+  min-width: 300px;
 }
 .pokedex .search-poke {
   display: flex;
@@ -187,6 +200,186 @@ section .back-to-down {
 .pokedex .search-poke .search-btn:hover {
   transform: scale(1.1);
   border-radius: 10px;
+}
+.pokedex .normal {
+  background: linear-gradient(225deg, white 390px, #c9c9c9 0);
+  border-top: 20px solid #c9c9c9;
+  color: #242424;
+}
+.pokedex .normal .right-top-angle, .pokedex .normal .left-bottom-angle {
+  background: linear-gradient(225deg, #c9c9c9 36px, white 0);
+  border: none;
+}
+.pokedex .fighting {
+  background: linear-gradient(225deg, white 390px, #4e0000 0);
+  border-top: 20px solid #4e0000;
+  color: #c95a00;
+}
+.pokedex .fighting .right-top-angle, .pokedex .fighting .left-bottom-angle {
+  background: linear-gradient(225deg, #4e0000 36px, white 0);
+  border: none;
+}
+.pokedex .flying {
+  background: linear-gradient(225deg, white 390px, #b0fcff 0);
+  border-top: 20px solid #b0fcff;
+  color: #242424;
+}
+.pokedex .flying .right-top-angle, .pokedex .flying .left-bottom-angle {
+  background: linear-gradient(225deg, #b0fcff 36px, white 0);
+  border: none;
+}
+.pokedex .poison {
+  background: linear-gradient(225deg, white 390px, #5c0057 0);
+  border-top: 20px solid #5c0057;
+  color: #af00be;
+}
+.pokedex .poison .right-top-angle, .pokedex .poison .left-bottom-angle {
+  background: linear-gradient(225deg, #5c0057 0, 36px, white 0);
+  border: none;
+}
+.pokedex .ground {
+  background: linear-gradient(225deg, white 390px, #6e4b00 0);
+  border-top: 20px solid #6e4b00;
+  color: #d6af00;
+}
+.pokedex .ground .right-top-angle, .pokedex .ground .left-bottom-angle {
+  background: linear-gradient(225deg, #6e4b00 36px, white 0);
+  border: none;
+}
+.pokedex .rock {
+  background: linear-gradient(225deg, white 390px, #36322d 0);
+  border-top: 20px solid #36322d;
+  color: #fc944f;
+}
+.pokedex .rock .right-top-angle, .pokedex .rock .left-bottom-angle {
+  background: linear-gradient(225deg, #36322d 36px, white 0);
+  border: none;
+}
+.pokedex .bug {
+  background: linear-gradient(225deg, white 390px, #00ff95 0);
+  border-top: 20px solid #00ff95;
+  color: #242424;
+}
+.pokedex .bug .right-top-angle, .pokedex .bug .left-bottom-angle {
+  background: linear-gradient(225deg, #00ff95 36px, white 0);
+  border: none;
+}
+.pokedex .ghost {
+  background: linear-gradient(225deg, white 390px, #9a00a8 0);
+  border-top: 20px solid #9a00a8;
+  color: #242424;
+}
+.pokedex .ghost .right-top-angle, .pokedex .ghost .left-bottom-angle {
+  background: linear-gradient(225deg, #9a00a8 36px, white 0);
+  border: none;
+}
+.pokedex .steel {
+  background: linear-gradient(225deg, white 390px, #242424 0);
+  border-top: 20px solid #242424;
+  color: #818181;
+}
+.pokedex .steel .right-top-angle, .pokedex .steel .left-bottom-angle {
+  background: linear-gradient(225deg, #242424 36px, white 0);
+  border: none;
+}
+.pokedex .fire {
+  background: linear-gradient(225deg, white 390px, red 0);
+  border-top: 20px solid red;
+  color: #242424;
+}
+.pokedex .fire .right-top-angle, .pokedex .fire .left-bottom-angle {
+  background: linear-gradient(225deg, red 36px, white 0);
+  border: none;
+}
+.pokedex .water {
+  background: linear-gradient(225deg, white 390px, #1100ff 0);
+  border-top: 20px solid #1100ff;
+  color: #242424;
+}
+.pokedex .water .right-top-angle, .pokedex .water .left-bottom-angle {
+  background: linear-gradient(225deg, #1100ff 36px, white 0);
+  border: none;
+}
+.pokedex .grass {
+  background: linear-gradient(225deg, white 390px, #25db00 0);
+  border-top: 20px solid #25db00;
+  color: #242424;
+}
+.pokedex .grass .right-top-angle, .pokedex .grass .left-bottom-angle {
+  background: linear-gradient(225deg, #25db00 36px, white 0);
+  border: none;
+}
+.pokedex .electric {
+  background: linear-gradient(225deg, white 390px, #eeff00 0);
+  border-top: 20px solid #eeff00;
+  color: #242424;
+}
+.pokedex .electric .right-top-angle, .pokedex .electric .left-bottom-angle {
+  background: linear-gradient(225deg, #eeff00 36px, white 0);
+  border: none;
+}
+.pokedex .psychic {
+  background: linear-gradient(225deg, white 390px, #ff00b3 0);
+  border-top: 20px solid #ff00b3;
+  color: #242424;
+}
+.pokedex .psychic .right-top-angle, .pokedex .psychic .left-bottom-angle {
+  background: linear-gradient(225deg, #ff00b3 36px, white 0);
+  border: none;
+}
+.pokedex .ice {
+  background: linear-gradient(225deg, white 390px, #00eeff 0);
+  border-top: 20px solid #00eeff;
+  color: #242424;
+}
+.pokedex .ice .right-top-angle, .pokedex .ice .left-bottom-angle {
+  background: linear-gradient(225deg, #00eeff 36px, white 0);
+  border: none;
+}
+.pokedex .dragon {
+  background: linear-gradient(225deg, white 390px, #ffbb00 0);
+  border-top: 20px solid #ffbb00;
+  color: #242424;
+}
+.pokedex .dragon .right-top-angle, .pokedex .dragon .left-bottom-angle {
+  background: linear-gradient(225deg, #ffbb00 36px, white 0);
+  border: none;
+}
+.pokedex .dark {
+  background: linear-gradient(225deg, white 390px, black 0);
+  border-top: 20px solid black;
+  color: #818181;
+}
+.pokedex .dark .right-top-angle, .pokedex .dark .left-bottom-angle {
+  background: linear-gradient(225deg, black 36px, white 0);
+  border: none;
+}
+.pokedex .fairy {
+  background: linear-gradient(225deg, white 390px, #ffd6a0 0);
+  border-top: 20px solid #ffd6a0;
+  color: #242424;
+}
+.pokedex .fairy .right-top-angle, .pokedex .fairy .left-bottom-angle {
+  background: linear-gradient(225deg, #ffd6a0 36px, white 0);
+  border: none;
+}
+.pokedex .unknown {
+  background: linear-gradient(225deg, white 390px, white 0);
+  border-top: 20px solid white;
+  color: #242424;
+}
+.pokedex .unknown .right-top-angle, .pokedex .unknown .left-bottom-angle {
+  background: linear-gradient(225deg, white 36px, white 0);
+  border: none;
+}
+.pokedex .shadow {
+  background: linear-gradient(225deg, white 390px, #270033 0);
+  border-top: 20px solid #270033;
+  color: dimgray;
+}
+.pokedex .shadow .right-top-angle, .pokedex .shadow .left-bottom-angle {
+  background: linear-gradient(225deg, #270033 36px, white 0);
+  border: none;
 }
 
 .pokemon {
@@ -266,10 +459,9 @@ section .back-to-down {
   transform: scale(1.1);
 }
 .pokedex-all .pokemon.active {
-  background: #b2ff6a !important;
+  background: #b2ff6a;
 }
 .pokedex-all .pokemon .poke-img {
-  background-color: #ffc0a2;
   border-radius: 0 50% 50% 50%;
   width: 70%;
   margin: 0 auto;
@@ -314,203 +506,123 @@ section .back-to-down {
 
 /*=============================================================================*/
 .normal {
-  background: linear-gradient(225deg, white 390px, #c9c9c9 0);
+  background: #c9c9c9;
   border-top: 20px solid #c9c9c9;
   color: #242424;
 }
-.normal .right-top-angle, .normal .left-bottom-angle {
-  background: linear-gradient(225deg, #c9c9c9 36px, white 0);
-  border: none;
-}
 
 .fighting {
-  background: linear-gradient(225deg, white 390px, #4e0000 0);
+  background: #4e0000;
   border-top: 20px solid #4e0000;
   color: #c95a00;
 }
-.fighting .right-top-angle, .fighting .left-bottom-angle {
-  background: linear-gradient(225deg, #4e0000 36px, white 0);
-  border: none;
-}
 
 .flying {
-  background: linear-gradient(225deg, white 390px, #b0fcff 0);
+  background: #b0fcff;
   border-top: 20px solid #b0fcff;
   color: #242424;
 }
-.flying .right-top-angle, .flying .left-bottom-angle {
-  background: linear-gradient(225deg, #b0fcff 36px, white 0);
-  border: none;
-}
 
 .poison {
-  background: linear-gradient(225deg, white 390px, #5c0057 0);
+  background: #5c0057;
   border-top: 20px solid #5c0057;
   color: #af00be;
 }
-.poison .right-top-angle, .poison .left-bottom-angle {
-  background: linear-gradient(225deg, #5c0057 0, 36px, white 0);
-  border: none;
-}
 
 .ground {
-  background: linear-gradient(225deg, white 390px, #6e4b00 0);
+  background: #6e4b00;
   border-top: 20px solid #6e4b00;
   color: #d6af00;
 }
-.ground .right-top-angle, .ground .left-bottom-angle {
-  background: linear-gradient(225deg, #6e4b00 36px, white 0);
-  border: none;
-}
 
 .rock {
-  background: linear-gradient(225deg, white 390px, #36322d 0);
+  background: #36322d;
   border-top: 20px solid #36322d;
   color: #fc944f;
 }
-.rock .right-top-angle, .rock .left-bottom-angle {
-  background: linear-gradient(225deg, #36322d 36px, white 0);
-  border: none;
-}
 
 .bug {
-  background: linear-gradient(225deg, white 390px, #00ff95 0);
+  background: #00ff95;
   border-top: 20px solid #00ff95;
   color: #242424;
 }
-.bug .right-top-angle, .bug .left-bottom-angle {
-  background: linear-gradient(225deg, #00ff95 36px, white 0);
-  border: none;
-}
 
 .ghost {
-  background: linear-gradient(225deg, white 390px, #9a00a8 0);
+  background: #9a00a8;
   border-top: 20px solid #9a00a8;
   color: #242424;
 }
-.ghost .right-top-angle, .ghost .left-bottom-angle {
-  background: linear-gradient(225deg, #9a00a8 36px, white 0);
-  border: none;
-}
 
 .steel {
-  background: linear-gradient(225deg, white 390px, #242424 0);
+  background: #242424;
   border-top: 20px solid #242424;
   color: #818181;
 }
-.steel .right-top-angle, .steel .left-bottom-angle {
-  background: linear-gradient(225deg, #242424 36px, white 0);
-  border: none;
-}
 
 .fire {
-  background: linear-gradient(225deg, white 390px, red 0);
+  background: red;
   border-top: 20px solid red;
   color: #242424;
 }
-.fire .right-top-angle, .fire .left-bottom-angle {
-  background: linear-gradient(225deg, red 36px, white 0);
-  border: none;
-}
 
 .water {
-  background: linear-gradient(225deg, white 390px, #1100ff 0);
+  background: #1100ff;
   border-top: 20px solid #1100ff;
   color: #242424;
 }
-.water .right-top-angle, .water .left-bottom-angle {
-  background: linear-gradient(225deg, #1100ff 36px, white 0);
-  border: none;
-}
 
 .grass {
-  background: linear-gradient(225deg, white 390px, #25db00 0);
+  background: #25db00;
   border-top: 20px solid #25db00;
   color: #242424;
 }
-.grass .right-top-angle, .grass .left-bottom-angle {
-  background: linear-gradient(225deg, #25db00 36px, white 0);
-  border: none;
-}
 
 .electric {
-  background: linear-gradient(225deg, white 390px, #eeff00 0);
+  background: #eeff00;
   border-top: 20px solid #eeff00;
   color: #242424;
 }
-.electric .right-top-angle, .electric .left-bottom-angle {
-  background: linear-gradient(225deg, #eeff00 36px, white 0);
-  border: none;
-}
 
 .psychic {
-  background: linear-gradient(225deg, white 390px, #ff00b3 0);
+  background: #ff00b3;
   border-top: 20px solid #ff00b3;
   color: #242424;
 }
-.psychic .right-top-angle, .psychic .left-bottom-angle {
-  background: linear-gradient(225deg, #ff00b3 36px, white 0);
-  border: none;
-}
 
 .ice {
-  background: linear-gradient(225deg, white 390px, #00eeff 0);
+  background: #00eeff;
   border-top: 20px solid #00eeff;
   color: #242424;
 }
-.ice .right-top-angle, .ice .left-bottom-angle {
-  background: linear-gradient(225deg, #00eeff 36px, white 0);
-  border: none;
-}
 
 .dragon {
-  background: linear-gradient(225deg, white 390px, #ffbb00 0);
+  background: #ffbb00;
   border-top: 20px solid #ffbb00;
   color: #242424;
 }
-.dragon .right-top-angle, .dragon .left-bottom-angle {
-  background: linear-gradient(225deg, #ffbb00 36px, white 0);
-  border: none;
-}
 
 .dark {
-  background: linear-gradient(225deg, white 390px, black 0);
+  background: black;
   border-top: 20px solid black;
   color: #818181;
 }
-.dark .right-top-angle, .dark .left-bottom-angle {
-  background: linear-gradient(225deg, black 36px, white 0);
-  border: none;
-}
 
 .fairy {
-  background: linear-gradient(225deg, white 390px, #ffd6a0 0);
+  background: #ffd6a0;
   border-top: 20px solid #ffd6a0;
   color: #242424;
 }
-.fairy .right-top-angle, .fairy .left-bottom-angle {
-  background: linear-gradient(225deg, #ffd6a0 36px, white 0);
-  border: none;
-}
 
 .unknown {
-  background: linear-gradient(225deg, white 390px, white 0);
+  background: white;
   border-top: 20px solid white;
   color: #242424;
 }
-.unknown .right-top-angle, .unknown .left-bottom-angle {
-  background: linear-gradient(225deg, white 36px, white 0);
-  border: none;
-}
 
 .shadow {
-  background: linear-gradient(225deg, white 390px, #270033 0);
+  background: #270033;
   border-top: 20px solid #270033;
   color: dimgray;
-}
-.shadow .right-top-angle, .shadow .left-bottom-angle {
-  background: linear-gradient(225deg, #270033 36px, white 0);
-  border: none;
 }
 
 /*# sourceMappingURL=style.css.map */
